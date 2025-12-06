@@ -4,13 +4,13 @@
 
 ## DecibelsService.js
 
-frontend\frontend\src\services\DecibelsService.js
+frontend\src\services\DecibelsService.js
 
 ### url
 
 ## trilateration.js
 
-frontend\frontend\src\utils\trilateration.js
+frontend\src\utils\trilateration.js
 
 ### distance between detectors
 <!-- 
@@ -33,9 +33,9 @@ I0 needs to be set to appropriate value
 # Starting
 # to start backend
 
-python -u "YOURPATH\incz_prototyp\backend\base.py"
+python -u "YOURPATH\backend\base.py"
 
 # to start frontend
 
-cd \incz_prototyp\frontend\frontend
+cd frontend\frontend
 npm start
