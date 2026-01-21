@@ -1,0 +1,36 @@
+# Choose a base image with Python
+FROM python:3.11-slim
+
+# Install necessary build dependencies and tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    libffi-dev \
+    libssl-dev \
+    libaio-dev \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install flask==3.0.*
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the application files
+COPY base.py /app/
+COPY requirements.txt /app/
+# COPY static/ /app/static/
+
+# Copy the fonts directory and its contents
+# COPY fonts/ /app/fonts/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+# Make sure the fonts directory exists and has the correct permissions
+# RUN ls -la /app/fonts/
+
+# Expose the port where the application runs
+EXPOSE 5000
+
+# Command to run the application
+CMD ["python", "base.py"]

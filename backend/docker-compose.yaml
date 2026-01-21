@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: INCZ_2025
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/backend
