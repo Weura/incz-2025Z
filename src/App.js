@@ -4,6 +4,7 @@ import Detectors from './components/Detectors';
 import Logo from './components/Logo';
 import Header from './components/Header';
 import NoiseMap from './components/NoiseMap';
+import NoiseMapSvg from './components/NoiseMapSvg';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Header />
 
         {/* <Detectors /> */}
-
+        <NoiseMapSvg />
+        
         <NoiseMap />
         
       </div>

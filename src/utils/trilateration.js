@@ -5,9 +5,10 @@ const length = 10;
 // Convert dB readings to approximate distances
 export function dbToDistance(db) {
     // reference sound
-    const I0 = 1;
-    const I = Math.pow(10, db / 10);
-    return Math.sqrt(I0 / I) * length;
+    // const I0 = 1;
+    // const I = Math.pow(10, db / 10);
+    // return Math.sqrt(I0 / I) * length;
+    return (100 - db) * 0.15;
 }
 
 // Trilateration calculation
