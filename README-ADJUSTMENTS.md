@@ -1,3 +1,12 @@
+# odpalanie
+- backend
+/backend
+docker-compose up --build
+- frontend
+npm start
+(services/DecibelsService.js) - backend ip address
+
+
 # ---------------------
 # configuration
 # ---------------------
