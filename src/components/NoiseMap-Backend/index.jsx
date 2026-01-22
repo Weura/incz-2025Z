@@ -4,8 +4,7 @@ import { getNoiseData } from "../../services/DecibelsService";
 import { getLoudnessColor, getPercentageColor } from "../../utils/color";
 
 const LENGTH = 10;
-const SCALE = 60;
-const PADDING = 120;
+const SCALE = 20;
 const WIDTH = 900;
 const HEIGHT = 750;
 
@@ -31,8 +30,11 @@ export default function NoiseMapBackend() {
     { id: 3, x: LENGTH / 2, y: (LENGTH / 2) * Math.sqrt(2) },
   ];
 
-  const toSvgX = (x) => x * SCALE + PADDING;
-  const toSvgY = (y) => HEIGHT - PADDING - y * SCALE;
+    const triangleWidthPx = LENGTH * SCALE;
+    const triangleHeightPx = (LENGTH / 2) * Math.sqrt(2) * SCALE;
+    
+    const toSvgX = (x) => (WIDTH / 2) - (triangleWidthPx / 2) + (x * SCALE);
+    const toSvgY = (y) => (HEIGHT / 2) + (triangleHeightPx / 2) - (y * SCALE);
 
   return (
       <div style={{ padding: "20px", color: "white"}}>
@@ -113,12 +115,20 @@ export default function NoiseMapBackend() {
                         fill={circleColor}
                         fontSize="12"
                         fontWeight="bold"
-              >
-                D{d.id}
-              </text>
+              ></text>
+                <text
+                x={toSvgX(d.x) + 8}
+                y={toSvgY(d.y) - 8}
+                fill={circleColor}
+                fontSize="12"
+                fontWeight="bold"
+            >
+                D{d.id}: [{d.x.toFixed(1)}, {d.y.toFixed(1)}]
+            </text>
             </g>
           );
-        })}
+        })
+    }
 
         {/* 🔴 source */}
         {source && (
@@ -135,7 +145,7 @@ export default function NoiseMapBackend() {
               fill="#ef4444"
               fontSize="12"
             >
-              Source
+              Source: [{source.x.toFixed(2)}, {source.y.toFixed(2)}]
             </text>
           </g>
         )}
@@ -156,23 +166,22 @@ export default function NoiseMapBackend() {
   <h4 style={{ margin: "0 0 5px 0", color: "#2d3436" }}>Map Legend:</h4>
   
   <div style={{ display: "flex", gap: "25px", flexWrap: "wrap" }}>
-    {/* Detektor 1 */}
+    
     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-      <div style={{ width: 14, height: 14, borderRadius: "50%", backgroundColor: "#f3f31e", border: "1px solid #d4d41a" }} />
+      <div style={{ width: 14, height: 14, borderRadius: "50%", backgroundColor: "#44e3ff", border: "1px solid #3bc0d9" }} />
       <span style={{ color: "#333", fontSize: "0.9rem" }}>D1 Sensor</span>
     </div>
 
-    {/* Detektor 2 */}
-    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-      <div style={{ width: 14, height: 14, borderRadius: "50%", backgroundColor: "#44e3ff", border: "1px solid #3bc0d9" }} />
-      <span style={{ color: "#333", fontSize: "0.9rem" }}>D2 Sensor</span>
-    </div>
-
-    {/* Detektor 3 */}
     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
       <div style={{ width: 14, height: 14, borderRadius: "50%", backgroundColor: "#cd44ff", border: "1px solid #ac38d6" }} />
+      <span style={{ color: "#333", fontSize: "0.9rem" }}>D2 Sensor</span>
+                  </div>
+                  
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <div style={{ width: 14, height: 14, borderRadius: "50%", backgroundColor: "#f3f31e", border: "1px solid #d4d41a" }} />
       <span style={{ color: "#333", fontSize: "0.9rem" }}>D3 Sensor</span>
     </div>
+
 
     {/* Źródło Hałasu */}
     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
