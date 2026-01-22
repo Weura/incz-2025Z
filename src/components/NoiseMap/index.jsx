@@ -47,9 +47,9 @@ export default function NoiseMap() {
 
       <h2>Noise Source</h2>
       {source ? (
-        <p>
-          Estimated position: x = {source.x.toFixed(2)} m, y = {source.y.toFixed(2)} m
-        </p>
+          <p style={{ color: "white", paddingLeft: "20px" }}>
+            Estimated position: x = {source.x.toFixed(2)} m, y = {source.y.toFixed(2)} m
+          </p>
       ) : (
         <p>
           Cannot calculate source: one or more devices have validation less than 70

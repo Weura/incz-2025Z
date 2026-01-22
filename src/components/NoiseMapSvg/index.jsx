@@ -132,7 +132,7 @@ export default function NoiseMapSvg() {
       </svg>
 
       {source && (
-        <p>
+        <p style={{ color: "white", paddingLeft: "20px" }}>
           Source: x={source.x.toFixed(2)} m, y={source.y.toFixed(2)} m
         </p>
       )}
