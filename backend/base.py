@@ -32,9 +32,9 @@ class Measurement(db.Model):
 def seed_data():
     # x -92,75m y 35,34
     measurements = [
-        Measurement(dev_id=1,percentage=89,decibels=-14),
-        Measurement(dev_id=2,percentage=90,decibels=-16.5),
-        Measurement(dev_id=3,percentage=81,decibels=-15.2)
+        Measurement(dev_id=1,percentage=60,decibels=10),
+        Measurement(dev_id=2,percentage=30,decibels=20),
+        Measurement(dev_id=3,percentage=78,decibels=25)
     ]
     db.session.add_all(measurements)
     db.session.commit()

@@ -6,5 +6,3 @@ services:
     container_name: INCZ_2025
     ports:
       - "5001:5000"
-    volumes:
-      - .:/backend
